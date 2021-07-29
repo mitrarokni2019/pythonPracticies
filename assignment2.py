@@ -19,7 +19,7 @@ def assignment(wtok):
         if wtok.is_name():
             lex[str(wtok.get_current())] = result
         else:
-            raise CalculatorException( f"Expected variable after ’=’ {wtok.get_current()}")
+            raise CalculatorException(f"Expected variable after ’=’ {wtok.get_current()}")
         wtok.next()
 
     lex['ans'] = result
@@ -43,7 +43,7 @@ def term(wtok):
     while wtok.get_current() in ['*', '/']:
         operator = wtok.get_current()
         wtok.next()  # bypass *
-        if operator =='*':
+        if operator == '*':
             result = result * factor(wtok)
         else:
             divisor = factor(wtok)   
@@ -57,10 +57,10 @@ def factor(wtok):
     if wtok.get_current() == '(':
         wtok.next()  # bypass (
         result = assignment(wtok)
-        if wtok.get_current() ==')':
+        if wtok.get_current() == ')':
             wtok.next()  # bypass )
         else:
-            raise  CalculatorException("Unbalanced parentheses")
+            raise CalculatorException("Unbalanced parentheses")
 
     elif wtok.get_current() == '-':
         wtok.next()
