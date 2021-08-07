@@ -3,7 +3,6 @@ Represents a single item within the linked list.
 """
 from typing import Tuple
 
-
 class Node:
     # Initialize dictionary
     def __init__(self, key, value):
@@ -38,7 +37,7 @@ class Node:
         yield Tuple(self.key, self.value)
     
     def __str__(self):
-        return set(self.key) + ":" + set(self.value)
+        return str(self.key) + ":" + str(self.value)
 
 
 """
@@ -58,12 +57,42 @@ class Dictionary:
     def insert(self, key, value):
         if(self.__head == None):
             self.__head = Node(key, value)
+            return True
+
+        if(self.__head.key == key):
+            return False
+            
+        nodeHolder = self.__head.nextNode
+        while(nodeHolder is not None):
+            if(nodeHolder.key == key):
+                return False
+            nodeHolder = nodeHolder.nextNode
+
+        nodeHolder = self.__head
+        while(nodeHolder is not None):
+            if(nodeHolder.nextNode == None):
+                nodeHolder.nextNode = Node(key, value)
+                return True
+            nodeHolder = nodeHolder.nextNode
 
     """
     Returns value that is identified by `key`, or None if no such key exists.
     """
     def get(self, key):
-        pass   # Abstract method, add your own
+        if(self.__head == None):
+            return RuntimeError("there is no such a key in the dic")
+
+        if (self.__head.key == key):
+            return self.__head.value
+
+        nodeHolder = self.__head.nextNode
+        while(nodeHolder is not None):
+            if(nodeHolder.key == key):
+                return nodeHolder.value 
+            nodeHolder = nodeHolder.nextNode
+
+        return RuntimeError("there is no such a key in the dic")
+
 
     """
     Delete key-value pair identified by `key` and returns 'True' if deleted, 'False' if not found in the Dictionary.
@@ -82,3 +111,24 @@ class Dictionary:
     """
     def __str__(self):
         pass   # Abstract method, add your own
+
+    def printMe(self):
+        nodeHolder = self.__head
+        while(nodeHolder is not None):
+            print(nodeHolder)
+            nodeHolder = nodeHolder.nextNode
+
+
+
+d1 = Dictionary()
+d1.insert("k1", "v1")
+d1.insert("k1", "v1")
+d1.insert("k2", "v2")
+d1.insert("k3", "v3")
+
+d1.printMe()
+
+print(d1.get("k1"))
+print(d1.get("k4"))
+print(d1.get("k2"))
+
