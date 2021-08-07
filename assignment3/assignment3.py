@@ -98,8 +98,19 @@ class Dictionary:
     Delete key-value pair identified by `key` and returns 'True' if deleted, 'False' if not found in the Dictionary.
     """
     def delete(self, key):
-        pass   # Abstract method, add your own
-    
+        if(self.__head == None):
+            return RuntimeError(" dic is empty !")
+
+        if(self.__head.key == key):
+            return self.__head == self.__head.nextNode
+            
+        nodeHolder = self.__head
+        while(nodeHolder is not None):
+            if(nodeHolder.nextNode.key == key):
+                nodeHolder.nextNode = nodeHolder.nextNode.nextNode
+                break
+            nodeHolder = nodeHolder.nextNode
+
     """
         Returns a gererator that could iterate over the tupel (key, value) objects (orderd by key, smallest to largest)
     """
@@ -125,10 +136,12 @@ d1.insert("k1", "v1")
 d1.insert("k1", "v1")
 d1.insert("k2", "v2")
 d1.insert("k3", "v3")
-
+d1.insert("k4", "v4")
+d1.insert("k5", "v5")
+d1.delete("k3")
 d1.printMe()
 
-print(d1.get("k1"))
-print(d1.get("k4"))
-print(d1.get("k2"))
+# print(d1.get("k1"))
+# print(d1.get("k4"))
+# print(d1.get("k2"))
 
