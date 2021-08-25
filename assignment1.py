@@ -8,8 +8,6 @@
 
 # ## 04: Calculate specific character in a given string
 
-# In[1]:
-
 
 def CountChar(string, char):
     if not string:
@@ -18,15 +16,12 @@ def CountChar(string, char):
         return (string[0] == char) + CountChar(string[1:], char)
 
 
-# In[2]:
-
-
 string = "jogging"
 char = "j"
 print(CountChar(string, char))
 
 
-# In[3]:
+
 
 
 #4 second solution 
@@ -46,27 +41,17 @@ print(findNr(s,ch))
 
 # ## 05: Power of
 
-# In[12]:
-
-
 def Pow(n, m):
     if (m == 0):
         return 1
     else:
         return n * Pow(n, m-1)   
 
-
-# In[28]:
-
-
 n, m = 2, 5
 print(Pow(n, m))
 
 
 # ## 06: Multiplication of integers
-
-# In[7]:
-
 
 def Mul(n, m):
     if (m == 0):
@@ -76,18 +61,11 @@ def Mul(n, m):
     else:
         return n + Mul(n, m-1)
 
-
-# In[8]:
-
-
 n, m = 2, 5
 print(Mul(n, m))
 
 
 # ## 08: Harmonic sum
-
-# In[9]:
-
 
 def Harmonic(n):
     if (n == 1):
@@ -95,18 +73,11 @@ def Harmonic(n):
     else:
         return (1 / n) + Harmonic(n-1)
 
-
-# In[10]:
-
-
 n = 2
 print(Harmonic(n))
 
 
 # ## 09: Largest value in a list
-
-# In[ ]:
-
 
 # first 
 def Large(list):
@@ -117,9 +88,6 @@ def Large(list):
     
 list = [1, 2, 3, 4, 5]
 print(Large(list))    
-
-
-# In[ ]:
 
 
 #9 second way:
@@ -140,9 +108,6 @@ print(large_value(list))
 
 # ## 10: Reverse order
 
-# In[ ]:
-
-
 def Reverse(string):
     if not string:
         return ""
@@ -150,18 +115,11 @@ def Reverse(string):
         return string[-1] + Reverse(string[:-1])
 
 
-# In[5]:
-
-
 string = "sample string"
 print(Reverse(string))
 
 
 # ## 14: Matching parentheses
-
-# In[19]:
-
-
 
 def Match(string, counter = 0):
     if not string:
@@ -175,19 +133,11 @@ def Match(string, counter = 0):
     else:
         return Match(string[:-1], counter)
 
-
-# In[20]:
-
-
 string = "((((()))))"
 print(Match(string))
 
 string = "(()))))"
 print(Match(string))
-
-
-# In[ ]:
-
 
 
 def Match(string):
@@ -208,9 +158,6 @@ def Match(string):
 
 # ## 15 : Algorithm Analysis tasks
 
-# In[3]:
-
-
 # 03: Time to calculate Fibonacci sequence
 import time
 def fib(n):
@@ -219,9 +166,6 @@ def fib(n):
     else: 
         return fib(n-1)+fib(n-2)
 time.time()
-
-
-# In[10]:
 
 
 # 03: Time to calculate Fibonacci sequence
@@ -236,15 +180,9 @@ print(fib(35))
 
 # with watch      8.093= c* 1.618^35
 
-      
-# In[18]:
-
 
 print(pow(1.618,35))
 print(8.093/20618074.50599988)
-
-
-# In[17]:
 
 
 # t(50)= 545081.062694147 * 1.618^50
@@ -255,9 +193,6 @@ m=100
 print(pow(n,m)* 545081.062694147)
 m=100
 print(pow(n,m)*545081.062694147)
-
-
-# In[38]:
 
 
 #05: Insertion sort
@@ -274,9 +209,6 @@ def sortIns(l,n):
 n=5
 l=[2,7,4,5,61,22,34]
 # the answer of this book is in the word-version file
-
-
-# In[ ]:
 
 
 # 06: Compare insertion and merge sort
